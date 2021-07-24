@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Canvas } from "@react-three/fiber";
 import Orbit from './Orbit';
 
@@ -18,16 +18,19 @@ export type BackGroundProps = {
 **/
 const BackGround: React.FC<BackGroundProps> = (props) => {
     return <div style={{ height: '100vh', width: '100vw' }}>
-        <Canvas
-            style={{ background: props.backGroundColor ?? 'black' }}
-            shadows
-            camera={{ position: props.cameraPosition }}
-        >
-            {props.children}
-            {props.axeshelper && <axesHelper args={[10]} />}
-            <Orbit />
-            <ambientLight intensity={props.ambientLightIntensity ?? 0.2} />
-        </Canvas>
+        <Suspense fallback={null}>
+            <Canvas
+                style={{ background: props.backGroundColor ?? 'black' }}
+                shadows
+                camera={{ position: props.cameraPosition }}
+            >
+                {props.children}
+                {props.axeshelper && <axesHelper args={[10]} />}
+                <Orbit />
+                <ambientLight intensity={props.ambientLightIntensity ?? 0.2} />
+            </Canvas>
+        </Suspense>
+
     </div>
 }
 

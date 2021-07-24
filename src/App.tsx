@@ -1,19 +1,16 @@
 
 import './App.css';
-import { Canvas } from "@react-three/fiber";
-import Box from './Components/Box';
-import Orbit from './Components/BackGround/Orbit';
+import Plane from './Components/Plane';
+import BackGround from './Components/BackGround/BackGround';
+import BackGroundTexture from './Components/BackGround/BackGroundTexture';
 
 
 function App() {
 
-  return <div style={{ height: '100vh', width: '100vw' }}>
-    <Canvas style={{ background: 'black' }}>
-      <Box position={[4, 5, 6]} />
-      <axesHelper args={[10]} />
-      <Orbit />
-    </Canvas>
-  </div>
+  return <BackGround cameraPosition={[0, 2, 10]}>
+    <BackGroundTexture />
+    <Plane width={15} depth={10} color={"#ebebeb"} />
+  </BackGround>
 
 }
 
