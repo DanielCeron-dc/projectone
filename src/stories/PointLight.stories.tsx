@@ -1,9 +1,9 @@
 import React from 'react';
-import Plane from "../Components/Plane";
-import BackGround from '../Components/BackGround/BackGround';
+import Plane from "../Components/ThreeJs/Plane";
+import BackGround from '../Components/ThreeJs/BackGround/BackGround';
 import { Meta, Story } from "@storybook/react";
-import Box from '../Components/Box';
-import PointLight, { PointLightProps } from '../Components/PointLight';
+import Box from '../Components/ThreeJs/Box/Box';
+import PointLight, { PointLightProps } from '../Components/ThreeJs/PointLight';
 
 const PointLightStory: React.FC<PointLightProps> = (props) => {
     return <BackGround>

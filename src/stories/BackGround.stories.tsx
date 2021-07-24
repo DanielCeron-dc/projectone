@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-import Plane from "../Components/Plane";
-import BackGround, { BackGroundProps } from '../Components/BackGround/BackGround';
+import Plane from "../Components/ThreeJs/Plane";
+import BackGround, { BackGroundProps } from '../Components/ThreeJs/BackGround/BackGround';
 import { Meta, Story } from "@storybook/react";
-import BackGroundTexture from '../Components/BackGround/BackGroundTexture';
-import Box from '../Components/Box';
+import BackGroundTexture from '../Components/ThreeJs/BackGround/BackGroundTexture';
+import Box from '../Components/ThreeJs/Box/Box';
 
 
 

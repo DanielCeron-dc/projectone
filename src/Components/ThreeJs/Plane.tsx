@@ -1,4 +1,3 @@
-import { MeshProps } from '@react-three/fiber';
 import React from 'react';
 
 

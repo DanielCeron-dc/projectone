@@ -1,8 +1,11 @@
 import React from 'react';
-import Box, { BoxProps } from "../Components/Box";
-import BackGround from '../Components/BackGround/BackGround';
+import Box, { BoxProps } from "../Components/ThreeJs/Box/Box";
+import BackGround from '../Components/ThreeJs/BackGround/BackGround';
 import { Meta, Story } from "@storybook/react";
-import PointLight from '../Components/PointLight';
+import PointLight from '../Components/ThreeJs/PointLight';
+import BoxWithTexture, { BoxWithTextureProps } from '../Components/ThreeJs/Box/BoxWithTexture';
+import Boxes from '../Components/MainScene/Boxes';
+
 
 const BoxStory: React.FC<BoxProps> = (props) => {
     return <BackGround axeshelper ambientLightIntensity={1}>
@@ -11,6 +14,22 @@ const BoxStory: React.FC<BoxProps> = (props) => {
         <Box  {...props} />
     </BackGround>
 }
+
+const BoxWithTextureStory: React.FC<BoxWithTextureProps> = (props) => {
+
+    return <BackGround axeshelper ambientLightIntensity={1}>
+        <BoxWithTexture {...props} />
+    </BackGround>
+
+}
+
+const BoxesStory: React.FC<{}> = () => {
+    return <BackGround axeshelper ambientLightIntensity={1}>
+        <Boxes />
+    </BackGround>
+}
+
+
 
 export default {
     title: 'react-three-fiber | BOX',
@@ -29,4 +48,9 @@ export default {
 } as Meta<typeof BoxStory>;
 
 export const box: Story<BoxProps> = (props) => <BoxStory  {...props} />
+
+export const boxWithTexture: Story<BoxWithTextureProps> = (props) => <BoxWithTextureStory {...props} />
+
+
+export const boxes: Story = () => <BoxesStory />
 

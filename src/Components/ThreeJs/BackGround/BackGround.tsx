@@ -9,6 +9,8 @@ export type BackGroundProps = {
     backGroundColor?: string,
     axeshelper?: boolean,
     ambientLightIntensity?: number,
+    height?: number,
+    width?: number,
 };
 
 
@@ -17,7 +19,7 @@ export type BackGroundProps = {
  * it has a 3d camera and a 3d scene.
 **/
 const BackGround: React.FC<BackGroundProps> = (props) => {
-    return <div style={{ height: '100vh', width: '100vw' }}>
+    return <div style={{ height: props.height ?? '100vh', width: props.width ?? '100vw' }}>
         <Suspense fallback={null}>
             <Canvas
                 style={{ background: props.backGroundColor ?? 'black' }}

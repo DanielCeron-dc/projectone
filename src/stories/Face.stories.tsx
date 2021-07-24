@@ -1,6 +1,6 @@
 import React from 'react';
-import Face, { FaceProps } from "../Components/Face"
-import BackGround from '../Components/BackGround/BackGround';
+import Face, { FaceProps } from "../Components/ThreeJs/Face"
+import BackGround from '../Components/ThreeJs/BackGround/BackGround';
 import { Story, Meta } from '@storybook/react';
 
 const FaceStory: React.FC<FaceProps> = (props) => {

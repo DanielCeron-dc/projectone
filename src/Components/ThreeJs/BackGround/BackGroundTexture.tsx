@@ -1,4 +1,4 @@
-import React, { Suspense, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useLoader, useThree } from "@react-three/fiber";
 import * as THREE from 'three';
 
@@ -16,7 +16,7 @@ const BackGroundTexture: React.FC<BackGroundTextureProps> = (props) => {
         new THREE.WebGLCubeRenderTarget(
             texture.image.height
         ).fromEquirectangularTexture(gl, texture).texture
-        , [texture])
+        , [texture, gl])
 
 
     return <primitive attach="background" object={formatted} />
