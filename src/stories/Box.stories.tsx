@@ -4,7 +4,8 @@ import BackGround from '../Components/ThreeJs/BackGround/BackGround';
 import { Meta, Story } from "@storybook/react";
 import PointLight from '../Components/ThreeJs/PointLight';
 import BoxWithTexture, { BoxWithTextureProps } from '../Components/ThreeJs/Box/BoxWithTexture';
-import Boxes from '../Components/MainScene/Boxes';
+import Boxes from '../Components/ThreeJs/Box/Boxes';
+import StarBox from '../Components/ThreeJs/Box/StarBox';
 
 
 const BoxStory: React.FC<BoxProps> = (props) => {
@@ -30,6 +31,14 @@ const BoxesStory: React.FC<{}> = () => {
 }
 
 
+const StarBoxStory: React.FC<{}> = () => {
+    return <BackGround axeshelper ambientLightIntensity={1}>
+        <PointLight position={[2, 1, 0]} intensity={5} />
+        <PointLight position={[-2, -1, 0]} intensity={5} />
+        <StarBox />
+    </BackGround>
+}
+
 
 export default {
     title: 'react-three-fiber | BOX',
@@ -51,6 +60,7 @@ export const box: Story<BoxProps> = (props) => <BoxStory  {...props} />
 
 export const boxWithTexture: Story<BoxWithTextureProps> = (props) => <BoxWithTextureStory {...props} />
 
-
 export const boxes: Story = () => <BoxesStory />
+
+export const starBox: Story = () => <StarBoxStory />
 

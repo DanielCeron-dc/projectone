@@ -5,8 +5,8 @@ import BackGround from './Components/ThreeJs/BackGround/BackGround';
 import BackGroundTexture from './Components/ThreeJs/BackGround/BackGroundTexture';
 import ColorMenu from './Components/UI/ColorMenu';
 import { useState } from 'react';
-import Boxes from './Components/MainScene/Boxes';
-import Provider from "./State/Provider";
+import Boxes from './Components/ThreeJs/Box/Boxes';
+
 
 
 function App() {
@@ -16,11 +16,9 @@ function App() {
   return <div style={{ height: '100vh', width: '100vw' }}>
     <ColorMenu setColor={setColor} />
     <BackGround cameraPosition={[0, 2, 10]}>
-      <Provider >
-        <BackGroundTexture />
-        <Plane width={15} depth={10} color={color} />
-      </Provider>
-
+      <Boxes />
+      <BackGroundTexture />
+      <Plane width={15} depth={10} color={color} />
     </BackGround>
   </div>
 }

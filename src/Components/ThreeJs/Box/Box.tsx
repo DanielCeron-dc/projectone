@@ -12,12 +12,13 @@ export interface BoxProps {
     opacity?: number;
     roughness?: number;
     position?: [number, number, number];
+    useFrameWithRef?: (ref: React.MutableRefObject<THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]> | undefined>) => void;
 }
 
 const Box = (props: BoxProps) => {
     const meshRef = useRef<THREE.Mesh>();
-    useFrame((state) => {
-        meshRef.current?.rotation.set(meshRef.current.rotation.x + 0.01, meshRef.current.rotation.y + 0.01, 0)
+    useFrame(() => {
+        meshRef && props.useFrameWithRef && props.useFrameWithRef(meshRef);
     });
     return <mesh ref={meshRef} position={props.position} castShadow receiveShadow >
         <boxBufferGeometry args={[props.width, props.height, props.depth]} />
@@ -27,6 +28,7 @@ const Box = (props: BoxProps) => {
             transparent={props.transparent}
             metalness={props.metalness}
             roughness={props.roughness}
+            attach="material"
         />
     </mesh>
 }

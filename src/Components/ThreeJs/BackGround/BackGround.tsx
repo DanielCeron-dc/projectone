@@ -1,6 +1,9 @@
 import React, { Suspense } from 'react';
-import { Canvas } from "@react-three/fiber";
+import { Canvas, extend } from "@react-three/fiber";
 import Orbit from './Orbit';
+
+
+extend(Canvas);
 
 
 

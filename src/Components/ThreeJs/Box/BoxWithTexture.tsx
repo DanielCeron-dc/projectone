@@ -1,7 +1,8 @@
 
-import { useRef } from "react";
+
 import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from 'three';
+import React, { useRef } from "react";
 
 export interface BoxWithTextureProps {
 
@@ -14,14 +15,15 @@ export interface BoxWithTextureProps {
     roughness?: number;
     position?: [number, number, number];
     onClick?: () => void;
+    useFrameWithRef?: (ref: React.MutableRefObject<THREE.Mesh<THREE.BufferGeometry, THREE.Material | THREE.Material[]> | undefined>) => void;
 }
 
 const BoxWithTexture = (props: BoxWithTextureProps) => {
-    const meshRef = useRef<THREE.Mesh>();
-    const texture = useLoader(THREE.TextureLoader, "./wood.jpg");
 
-    useFrame((state) => {
-        meshRef.current?.rotation.set(meshRef.current.rotation.x + 0.01, meshRef.current.rotation.y + 0.01, 0)
+    const texture = useLoader(THREE.TextureLoader, "./wood.jpg");
+    const meshRef = useRef<THREE.Mesh>();
+    useFrame(() => {
+        meshRef && props.useFrameWithRef && props.useFrameWithRef(meshRef);
     });
     return <mesh ref={meshRef} position={props.position} castShadow receiveShadow onClick={props.onClick}>
         <boxBufferGeometry args={[props.width, props.height, props.depth]} />
@@ -36,4 +38,4 @@ const BoxWithTexture = (props: BoxWithTextureProps) => {
 }
 
 
-export default BoxWithTexture;
+export default React.memo(BoxWithTexture);
