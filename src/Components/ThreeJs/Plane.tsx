@@ -1,4 +1,6 @@
 import React from 'react';
+import { useBox } from "@react-three/cannon";
+
 
 
 export interface PlaneProps {
@@ -15,8 +17,11 @@ export interface PlaneProps {
 
 
 const Plane: React.FC<PlaneProps> = (props) => {
-    return <mesh position={props.position} receiveShadow>
-        <boxBufferGeometry args={[props.width ?? 1000, props.height, props.depth ?? 1000]} />
+
+
+
+    return <mesh receiveShadow  >
+        <boxBufferGeometry args={[props.width ?? 1000, props.height ?? 1, props.depth ?? 1000]} />
         <meshPhysicalMaterial
             color={props.color ?? 'grey'}
             opacity={props.opacity}

@@ -1,7 +1,5 @@
 import React, { CSSProperties, useState } from 'react';
 
-
-
 const style: CSSProperties = {
     backgroundColor: '#fff',
     borderRadius: '5px',

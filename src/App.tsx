@@ -6,6 +6,7 @@ import BackGroundTexture from './Components/ThreeJs/BackGround/BackGroundTexture
 import ColorMenu from './Components/UI/ColorMenu';
 import { useState } from 'react';
 import Boxes from './Components/ThreeJs/Box/Boxes';
+import SpriteText from './Components/ThreeJs/Text/SpriteText';
 
 
 
@@ -18,6 +19,7 @@ function App() {
     <BackGround cameraPosition={[0, 2, 10]}>
       <Boxes />
       <BackGroundTexture />
+      <SpriteText> hola</SpriteText>
       <Plane width={15} depth={10} color={color} />
     </BackGround>
   </div>

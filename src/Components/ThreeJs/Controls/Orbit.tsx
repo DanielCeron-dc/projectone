@@ -2,6 +2,7 @@
 import React from 'react';
 import { extend, ReactThreeFiber, useThree } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { useControlsStore } from '../../../state/ControlsStore';
 
 extend({ OrbitControls })
 
@@ -19,7 +20,8 @@ declare global {
 **/
 const Orbit: React.FC = () => {
     const { camera, gl } = useThree();
-    return <orbitControls args={[camera, gl.domElement]} enableKeys />
+    const { isOrbitControlsEnabled } = useControlsStore();
+    return <orbitControls attach="orbitControls" args={[camera, gl.domElement]} enableKeys enabled={isOrbitControlsEnabled} />
 }
 export default Orbit;
 

@@ -4,11 +4,14 @@ import BackGround from '../Components/ThreeJs/BackGround/BackGround';
 import { Meta, Story } from "@storybook/react";
 import Box from '../Components/ThreeJs/Box/Box';
 import PointLight, { PointLightProps } from '../Components/ThreeJs/PointLight';
+import Dragable from '../Components/ThreeJs/Controls/Dragable';
 
 const PointLightStory: React.FC<PointLightProps> = (props) => {
     return <BackGround>
-        <PointLight position={[0, 3, 0]} {...props} />
-        <Box position={[4, 1, 0]} />
+        <Dragable>
+            <PointLight position={[0, 3, 0]} {...props} />
+        </Dragable>
+        <Box position={[4, 1, 0]} roughness={0} />
         <Plane position={[0, -1, 0]} />
     </BackGround>
 }

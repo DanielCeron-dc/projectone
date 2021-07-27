@@ -7,10 +7,10 @@ interface IStarBox {
     turn: () => void;
 }
 
-const numberOfItems = 200
+const numberOfItems = 50
 const ids: number[] = new Array(numberOfItems).fill(0).map((_, i) => i)
 
-export const useStore = create<IStarBox>((set) => ({
+export const useStarBoxStore = create<IStarBox>((set) => ({
     // each box carries a unique id
     boxes: ids,
     // each box carries rotation coordinates
@@ -32,6 +32,6 @@ export const useStore = create<IStarBox>((set) => ({
                 coords[id] = [x + 0.01, y + 0.01, z + 0.01]
             }
             return { ...state, coords }
-        })
+        });
     }
 }))

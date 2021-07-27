@@ -1,11 +1,17 @@
 import React from 'react';
+import { Meta, Story } from "@storybook/react";
+import { Physics } from "@react-three/cannon";
+
 import Box, { BoxProps } from "../Components/ThreeJs/Box/Box";
 import BackGround from '../Components/ThreeJs/BackGround/BackGround';
-import { Meta, Story } from "@storybook/react";
 import PointLight from '../Components/ThreeJs/PointLight';
 import BoxWithTexture, { BoxWithTextureProps } from '../Components/ThreeJs/Box/BoxWithTexture';
 import Boxes from '../Components/ThreeJs/Box/Boxes';
 import StarBox from '../Components/ThreeJs/Box/StarBox';
+
+
+import PhysicsPlane from '../Components/ThreejsWithCannon/PhysicsPlane';
+import BoxPhysicsDragable from '../Components/ThreejsWithCannon/BoxPhysicsDragable';
 
 
 const BoxStory: React.FC<BoxProps> = (props) => {
@@ -39,6 +45,17 @@ const StarBoxStory: React.FC<{}> = () => {
     </BackGround>
 }
 
+const BoxPhysicsStory: React.FC<{}> = () => {
+
+    return <BackGround axeshelper ambientLightIntensity={1}>
+        <Physics>
+            <BoxPhysicsDragable />
+            <PhysicsPlane />
+        </Physics>
+    </BackGround>
+}
+
+
 
 export default {
     title: 'react-three-fiber | BOX',
@@ -63,4 +80,6 @@ export const boxWithTexture: Story<BoxWithTextureProps> = (props) => <BoxWithTex
 export const boxes: Story = () => <BoxesStory />
 
 export const starBox: Story = () => <StarBoxStory />
+
+export const boxPhysics: Story = () => <BoxPhysicsStory />
 

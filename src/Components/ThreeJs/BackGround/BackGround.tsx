@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { Canvas, extend } from "@react-three/fiber";
-import Orbit from './Orbit';
+import Orbit from '../Controls/Orbit';
 
 
 extend(Canvas);
@@ -27,7 +27,8 @@ const BackGround: React.FC<BackGroundProps> = (props) => {
             <Canvas
                 style={{ background: props.backGroundColor ?? 'black' }}
                 shadows
-                camera={{ position: props.cameraPosition }}
+                camera={{ position: props.cameraPosition, isPerspectiveCamera: true }}
+
             >
                 {props.children}
                 {props.axeshelper && <axesHelper args={[10]} />}

@@ -1,5 +1,5 @@
 import React, { Suspense, useCallback, useEffect } from 'react';
-import { useStore } from "../../../state/StarBoxStore";
+import { useStarBoxStore } from "../../../state/StarBoxStore";
 import Box from './Box';
 
 
@@ -7,7 +7,7 @@ import Box from './Box';
 
 const StarBox: React.FC = () => {
 
-    const { boxes } = useStore();
+    const { boxes } = useStarBoxStore();
 
     return <>
         {boxes.map((_, index) => {
@@ -18,10 +18,10 @@ const StarBox: React.FC = () => {
 
 const Box2: React.FC<{ id: number }> = (props) => {
     let rotationCoords: number[] = [0, 0, 0];
-    let turn = useStore(state => state.turn);
+    let turn = useStarBoxStore(state => state.turn);
 
     useEffect(() => {
-        useStore.subscribe((coors: number[]) => {
+        useStarBoxStore.subscribe((coors: number[]) => {
             rotationCoords = coors;
         }, (state) => state.coords[props.id])
     }, [])
