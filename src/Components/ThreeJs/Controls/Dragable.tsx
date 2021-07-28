@@ -48,6 +48,9 @@ const Dragable: React.FC<{ id?: number }> = (props) => {
             props.id !== undefined && setDragging(props.id, false);
         });
         currentControls.addEventListener("drag", (e) => {
+            if (e.object.position.y < 0) {
+                e.object.position.y = 0;
+            }; // prevent y-axis from going under ground
             props.id !== undefined && setPosition(props.id, [e.object.position.x, e.object.position.y, e.object.position.z]);
         });
 

@@ -20,7 +20,7 @@ const Plane: React.FC<PlaneProps> = (props) => {
 
 
 
-    return <mesh receiveShadow  >
+    return <mesh receiveShadow position={props.position ?? [0, -1, 0]} >
         <boxBufferGeometry args={[props.width ?? 1000, props.height ?? 1, props.depth ?? 1000]} />
         <meshPhysicalMaterial
             color={props.color ?? 'grey'}
@@ -28,6 +28,7 @@ const Plane: React.FC<PlaneProps> = (props) => {
             transparent={props.transparent}
             metalness={props.metalness}
             roughness={props.roughness}
+
         />
     </mesh>
 }

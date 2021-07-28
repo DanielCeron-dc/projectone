@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { extend, ReactThreeFiber, useThree } from "@react-three/fiber";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useControlsStore } from '../../../state/ControlsStore';
@@ -14,6 +14,8 @@ declare global {
     }
 }
 
+
+let isOninteracion = false;
 /** 
     this a component that wraps the three.js orbitControls, 
     this component allow you to control the camera with the mouse
@@ -21,7 +23,24 @@ declare global {
 const Orbit: React.FC = () => {
     const { camera, gl } = useThree();
     const { isOrbitControlsEnabled } = useControlsStore();
-    return <orbitControls attach="orbitControls" args={[camera, gl.domElement]} enableKeys enabled={isOrbitControlsEnabled} />
+    const orbitRef = useRef<OrbitControls>();
+
+    useEffect(() => {
+        orbitRef.current?.addEventListener('start', () => {
+            isOninteracion = true;
+        }
+        );
+        orbitRef.current?.addEventListener('end', () => {
+            isOninteracion = false;
+        })
+    }, []);
+
+    return <orbitControls
+        ref={orbitRef}
+        attach="orbitControls"
+        args={[camera, gl.domElement]}
+        enableKeys
+        enabled={isOninteracion ? true : isOrbitControlsEnabled} />
 }
 export default Orbit;
 

@@ -22,8 +22,6 @@ const BoxPhysics: React.FC<BoxPhysicsProps> = (props) => {
         }, (state) => state.positions[props.id]);
         usePhysicsBoxesStore.subscribe((value: boolean) => {
             doesItStartedDragging = value;
-            console.log(doesItStartedDragging);
-
         }, (state) => state.dragging[props.id]);
     }, []);
 
